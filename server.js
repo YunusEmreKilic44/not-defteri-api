@@ -5,6 +5,7 @@ const corsOptions = require("./config/corsConfig");
 const { logger } = require("./middlewares/logEvents");
 const errorHandler = require("./middlewares/errorHandler");
 const authRoutes = require("./routes/authRoutes");
+const { verifyToken } = require("./middlewares/auth");
 
 const app = express();
 

@@ -2,6 +2,8 @@ const fs = require("fs").promises;
 const path = require("path");
 const bcryptjs = require("bcryptjs");
 const { v4: uuid } = require("uuid");
+const jwt = require("jsonwebtoken");
+const { secret, expiresIn } = require("../config/jwtConfig");
 
 const register = async (req, res) => {
   const { username, email, password } = req.body;
@@ -77,7 +79,15 @@ const login = async (req, res) => {
 
     const { password: _, ...user } = findUser;
 
-    res.status(200).json({ message: "Giriş başarılı!", user });
+    const token = jwt.sign(
+      { id: user.id, email: user.email, role: "admin" },
+      secret,
+      {
+        expiresIn: expiresIn,
+      },
+    );
+
+    res.status(200).json({ message: "Giriş başarılı!", user, token });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
