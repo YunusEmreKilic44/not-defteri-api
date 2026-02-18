@@ -3,7 +3,14 @@ const path = require("path");
 const bcryptjs = require("bcryptjs");
 const { v4: uuid } = require("uuid");
 const jwt = require("jsonwebtoken");
-const { secret, expiresIn } = require("../config/jwtConfig");
+const {
+  secret,
+  expiresIn,
+  accessToken,
+  accessToken: token,
+  refreshToken: refreshTok,
+} = require("../config/jwtConfig");
+const refreshTokenController = require("./refreshTokenController");
 
 const register = async (req, res) => {
   const { username, email, password } = req.body;
@@ -79,24 +86,65 @@ const login = async (req, res) => {
 
     const { password: _, ...user } = findUser;
 
-    const token = jwt.sign(
-      { id: user.id, email: user.email, role: "admin" },
-      secret,
+    const accessToken = jwt.sign(
+      { id: user.id, email: user.email },
+      token.secret,
       {
-        expiresIn: expiresIn,
+        expiresIn: token.expiresIn,
       },
     );
 
-    res.status(200).json({ message: "Giriş başarılı!", user, token });
+    const refreshToken = jwt.sign(
+      { id: user.id, email: user.email },
+      refreshTok.secret,
+      {
+        expiresIn: refreshTok.expiresIn,
+      },
+    );
+
+    await refreshTokenController.saveToken(user.id, refreshToken);
+
+    res
+      .status(200)
+      .json({ message: "Giriş başarılı!", user, accessToken, refreshToken });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
 };
 
-const refreshToken = (req, res, next) => {};
+const refresh = async (req, res, next) => {
+  try {
+    const oldRefreshToken = req.body.refreshToken;
+
+    if (!oldRefreshToken) {
+      return res.status(403).json({ message: "Refresh token gerekli!" });
+    }
+
+    const decoded = jwt.verify(oldRefreshToken, refreshTok.secret);
+
+    await refreshTokenController.removeToken(oldRefreshToken);
+
+    const newAccessToken = jwt.sign({ id: decoded.id }, token.secret, {
+      expiresIn: token.expiresIn,
+    });
+
+    const newRefreshToken = jwt.sign({ id: decoded.id }, refreshTok.secret, {
+      expiresIn: refreshTok.expiresIn,
+    });
+
+    await refreshTokenController.saveToken(decoded.id, newRefreshToken);
+
+    return res.status(200).json({
+      accessToken: newAccessToken,
+      refreshToken: newRefreshToken,
+    });
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
 
 module.exports = {
   register,
   login,
-  refreshToken,
+  refresh,
 };

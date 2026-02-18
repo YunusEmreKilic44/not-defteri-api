@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "userId": "203a7df4-eaea-4f5d-b8ed-8c1a7ba699f8",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIwM2E3ZGY0LWVhZWEtNGY1ZC1iOGVkLThjMWE3YmE2OTlmOCIsImVtYWlsIjoieXVudXNAZ21haWwuY29tIiwiaWF0IjoxNzcxNDQwMTY3LCJleHAiOjE3NzIwNDQ5Njd9.UybIBb_e9J9bpwZL7qTzYnQ8PT4R3Iki_5UILddpp8A",
+    "createdAt": "2026-02-18T18:42:47.638Z"
+  },
+  {
+    "userId": "4443a1b4-18f6-4b11-995e-747db6a4bf3c",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQ0NDNhMWI0LTE4ZjYtNGIxMS05OTVlLTc0N2RiNmE0YmYzYyIsImVtYWlsIjoia2lsaWNAZ21haWwuY29tIiwiaWF0IjoxNzcxNDQwODQ2LCJleHAiOjE3NzIwNDU2NDZ9.jKNYXKC1kfQD0mtncDq6SCZ3l0t48dZ4x4Cc-i_lDJo",
+    "createdAt": "2026-02-18T18:54:06.747Z"
+  }
+]
