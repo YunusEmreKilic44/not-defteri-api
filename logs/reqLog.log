@@ -13,3 +13,14 @@
 17.02.2026	19.28.25	b767976a-f14f-4380-8c7b-567d74071009	POST	/api/auth/login	undefined
 17.02.2026	19.35.00	c8ba0ee7-759d-4c0e-b12f-68ccb97af747	POST	/api/auth/login	undefined
 17.02.2026	19.35.02	340d4397-960e-4fcd-8eff-357d0adfbe42	POST	/api/auth/login	undefined
+18.02.2026	20.12.42	2a04cbf1-28b9-4ffb-9fc0-6f6476d60ba1	GET	/api/auth	undefined
+18.02.2026	20.13.27	737c10e4-1f1c-4ad9-9965-c694f145a1e6	POST	/api/auth	undefined
+18.02.2026	20.13.28	e0613b0c-38d3-4c60-91a9-b2fcd930ddaa	POST	/api/auth	undefined
+18.02.2026	20.14.53	d6753c5e-c074-4563-94d2-7bbe58a58adf	POST	/api/auth	undefined
+18.02.2026	20.14.54	7d64ec60-1e7b-49ce-b5f1-0f671db247c4	POST	/api/auth	undefined
+18.02.2026	20.16.05	d91e852e-af59-485f-bfa5-1b0b8c3eabfd	POST	/api/auth	undefined
+18.02.2026	20.16.05	dfd6bd54-1e5a-4e65-bc1c-19829d477506	POST	/api/auth	undefined
+18.02.2026	20.16.06	12f5e478-eb4b-46cc-8a89-13972070349f	POST	/api/auth	undefined
+18.02.2026	20.16.07	63431efd-2eeb-4afe-a3a7-cb405782cada	POST	/api/auth	undefined
+18.02.2026	20.16.28	3d3c15e4-c6f4-4ca9-8908-c5678ebab3ab	POST	/api/notes	undefined
+18.02.2026	20.16.54	e9117235-737e-4d17-b9d2-c1e219cdd15d	DELETE	/api/notes/5e95559f-e7db-49ea-8ad6-b1d8b6fef17d	undefined

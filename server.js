@@ -5,6 +5,7 @@ const corsOptions = require("./config/corsConfig");
 const { logger } = require("./middlewares/logEvents");
 const errorHandler = require("./middlewares/errorHandler");
 const authRoutes = require("./routes/authRoutes");
+const noteRoutes = require("./routes/noteRoutes");
 const { verifyToken } = require("./middlewares/auth");
 
 const app = express();
@@ -15,13 +16,14 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(logger);
 
-app.use(errorHandler);
-
 app.get("/hello", (req, res) => {
   res.send("Hello");
 });
 
 app.use("/api/auth", authRoutes);
+app.use("/api/notes", noteRoutes);
+
+app.use(errorHandler);
 
 const PORT = process.env.PORT;
 
